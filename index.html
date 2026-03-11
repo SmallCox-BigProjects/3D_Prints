@@ -1,103 +1,138 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Small-Cox, Lil Projects</title>
-    <style>
-        /* Basic table styling */
-        table.print-files { border-collapse: collapse; width: 100%; max-width: 900px; }
-        table.print-files th, table.print-files td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        table.print-files th { background: #f2f2f2; }
-        td.notes { white-space: pre-wrap; color: #444; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Small-Cox, Lil Projects</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#ffffff; --muted:#6b7280; --accent:#0ea5a4; --border:#e6e9ef;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:#0f172a;background:linear-gradient(180deg,var(--bg),#ffffff);}
+    .wrap{max-width:980px;margin:36px auto;padding:20px}
+    .header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;box-shadow:0 8px 20px rgba(2,6,23,0.08)}
+    h1{margin:0;font-size:1.4rem}
+    p.lead{margin:4px 0 0;color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 10px 30px rgba(2,6,23,0.04)}
+    table.print-files{width:100%;border-collapse:separate;border-spacing:0;margin-top:8px}
+    table.print-files thead th{background:#fbfdff;padding:12px 14px;text-align:left;font-weight:700;border-bottom:1px solid var(--border)}
+    table.print-files th, table.print-files td{padding:12px 14px;vertical-align:top}
+    tbody tr{transition:background .18s,transform .12s}
+    tbody tr:nth-child(odd){background:#fff}
+    tbody tr:nth-child(even){background:#fbfbfd}
+    tbody tr:hover{background:linear-gradient(90deg,#ffffff,#f7fffe);transform:translateY(-1px)}
+    .name-link a{color:#0f172a;font-weight:600;text-decoration:none}
+    .name-link a:hover{color:var(--accent);text-decoration:underline}
+    .link-cell a{display:inline-block;background:#ecfdf5;color:var(--accent);padding:6px 10px;border-radius:8px;border:1px solid rgba(14,165,164,0.12);text-decoration:none;font-size:.95rem}
+    .notes{color:var(--muted);font-size:.95rem}
+    .notes-table td{border:none;padding:4px 6px}
+    @media(max-width:720px){
+      table.print-files thead{display:none}
+      table.print-files, table.print-files tbody, table.print-files tr, table.print-files td{display:block;width:100%}
+      table.print-files tr{margin-bottom:12px;background:linear-gradient(180deg,#fff,#fafcff);border-radius:10px;padding:10px}
+      table.print-files td{padding:8px 10px;border:none}
+      td[data-label]::before{content:attr(data-label);display:block;font-weight:700;color:var(--muted);margin-bottom:6px}
+      .link-cell a{width:100%;box-sizing:border-box;display:block;text-align:left}
+    }
+  </style>
 </head>
 <body>
-    <h1>Small-Cox, Lil Projects</h1>
-    <p> Landing GitHubIO page for 3D printing projects.</p>
+  <div class="wrap">
+    <div class="header">
+      <div class="logo">3D</div>
+      <div>
+        <h1>Small-Cox, Lil Projects</h1>
+        <p class="lead">Landing GitHubIO page for 3D printing projects.</p>
+      </div>
+    </div>
 
-    <h2>Print files</h2>
-    <table class="print-files collapsible" data-collapsible="table" id="printFilesTable">
+    <div class="card" aria-labelledby="printfiles">
+      <h2 id="printfiles" style="margin-top:0">Print files</h2>
+
+      <table class="print-files" id="printFilesTable" aria-label="Print files table">
         <thead>
-            <tr><th>Name</th><th>Link</th><th>Notes</th></tr>
+          <tr><th>Name</th><th>Link</th><th>Notes</th></tr>
         </thead>
         <tbody>
-            <tr>
-                <td><a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/FlexiSnake/">FlexiSnake</a></td>
-                <td>Img_Placeholder</td>
-                <td class="notes">
-                    <table class="notes-table" style="border-collapse:collapse;">
-                        <tr>
-                            <td style="padding:4px 8px;font-weight:600;border:none;">Quality</td>
-                            <td style="padding:4px 8px;border:none;">Good</td>
-                        </tr>
-                        <tr>
-                            <td style="padding:4px 8px;font-weight:600;border:none;">Time</td>
-                            <td style="padding:4px 8px;border:none;">1.5 hours</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/P2S_PoopShoot/">P2S_PoopShoot</a></td>
-                <td>Img_Placeholder</td>
-                <td class="notes">
-                <table class="notes-table" style="border-collapse:collapse;">
-                    <tr>
-                        <td style="padding:4px 8px;font-weight:600;border:none;">Quality</td>
-                        <td style="padding:4px 8px;border:none;">Not Printed</td>
-                    </tr>
-                    <tr>
-                        <td style="padding:4px 8px;font-weight:600;border:none;">Time</td>
-                        <td style="padding:4px 8px;border:none;">11 Hours</td>
-                    </tr>
-                </table>
-                </td></tr>
-            <tr>
-                <td><a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/FlexiDick/">FlexiDick</a></td>
-                <td>Img_Placeholder</td>
-                <td class="notes">
-                    <table class="notes-table" style="border-collapse:collapse;">
-                        <tr>
-                            <td style="padding:4px 8px;font-weight:600;border:none;">Quality</td>
-                            <td style="padding:4px 8px;border:none;">Medium</td>
-                        </tr>
-                        <tr>
-                            <td style="padding:4px 8px;font-weight:600;border:none;">Time</td>
-                            <td style="padding:4px 8px;border:none;">1.5 hours</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/PlasticRivet_FasteningClips/">PlasticRivet_FasteningClips</a></td>
-                <td>Img_Placeholder</td>
-                <td class="notes">
-                <table class="notes-table" style="border-collapse:collapse;">
-                    <tr>
-                        <td style="padding:4px 8px;font-weight:600;border:none;">Quality</td>
-                        <td style="padding:4px 8px;border:none;">Low - Needs testing</td>
-                    </tr>
-                    <tr>
-                        <td style="padding:4px 8px;font-weight:600;border:none;">Time</td>
-                        <td style="padding:4px 8px;border:none;">30 Minutes</td>
-                    </tr>
-                </table>
-                </td></tr>
-            <tr>
-                <td><a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/Soap_Sponge_Trays/">Soap_Sponge_Trays</a></td>
-                <td>Img_Placeholder</td>
-                <td class="notes">
-                <table class="notes-table" style="border-collapse:collapse;">
-                    <tr>
-                        <td style="padding:4px 8px;font-weight:600;border:none;">Quality</td>
-                        <td style="padding:4px 8px;border:none;">Not Printed</td>
-                    </tr>
-                    <tr>
-                        <td style="padding:4px 8px;font-weight:600;border:none;">Time</td>
-                        <td style="padding:4px 8px;border:none;">1 Hour</td>
-                    </tr>
-                </table>
-                </td></tr>
+          <tr>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/FlexiSnake/">FlexiSnake</a>
+            </td>
+            <td class="link-cell" data-label="Link">
+              <a href="print_files/FlexiSnake/">print_files/FlexiSnake/</a>
+            </td>
+            <td class="notes" data-label="Notes">
+              <table class="notes-table" style="border-collapse:collapse;">
+                <tr><td style="font-weight:600">Quality</td><td>Good</td></tr>
+                <tr><td style="font-weight:600">Time</td><td>1.5 hours</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/P2S_PoopShoot/">P2S_PoopShoot</a>
+            </td>
+            <td class="link-cell" data-label="Link">
+              <a href="print_files/P2S_PoopShoot/">print_files/P2S_PoopShoot/</a>
+            </td>
+            <td class="notes" data-label="Notes">
+              <table class="notes-table" style="border-collapse:collapse;">
+                <tr><td style="font-weight:600">Quality</td><td>Not Printed</td></tr>
+                <tr><td style="font-weight:600">Time</td><td>11 Hours</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/FlexiDick/">FlexiDick</a>
+            </td>
+            <td class="link-cell" data-label="Link">
+              <a href="print_files/FlexiDick/">print_files/FlexiDick/</a>
+            </td>
+            <td class="notes" data-label="Notes">
+              <table class="notes-table" style="border-collapse:collapse;">
+                <tr><td style="font-weight:600">Quality</td><td>Medium</td></tr>
+                <tr><td style="font-weight:600">Time</td><td>1.5 hours</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/PlasticRivet_FasteningClips/">PlasticRivet_FasteningClips</a>
+            </td>
+            <td class="link-cell" data-label="Link">
+              <a href="print_files/PlasticRivet_FasteningClips/">print_files/PlasticRivet_FasteningClips/</a>
+            </td>
+            <td class="notes" data-label="Notes">
+              <table class="notes-table" style="border-collapse:collapse;">
+                <tr><td style="font-weight:600">Quality</td><td>Low - Needs testing</td></tr>
+                <tr><td style="font-weight:600">Time</td><td>30 Minutes</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/smallr1/3D_Prints/tree/main/print_files/Soap_Sponge_Trays/">Soap_Sponge_Trays</a>
+            </td>
+            <td class="link-cell" data-label="Link">
+              <a href="print_files/Soap_Sponge_Trays/">print_files/Soap_Sponge_Trays/</a>
+            </td>
+            <td class="notes" data-label="Notes">
+              <table class="notes-table" style="border-collapse:collapse;">
+                <tr><td style="font-weight:600">Quality</td><td>Not Printed</td></tr>
+                <tr><td style="font-weight:600">Time</td><td>1 Hour</td></tr>
+              </table>
+            </td>
+          </tr>
         </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
 </body>
 </html>
