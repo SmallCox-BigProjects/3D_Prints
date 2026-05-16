@@ -1,4 +1,15 @@
-# .gitignore
+# 3D model binaries (large files — not tracked)
+**/*.stl
+**/*.3mf
+**/*.step
+**/*.stp
+**/*.obj
+**/*.gcode
+**/*.bgcode
+**/*.amf
 
+# PDFs from external sources
+**/[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]-*.pdf
+
+# Legacy explicit ignores
 print_files/Dragons/Night Spirit_v1_2_og.stl
-/print_files
