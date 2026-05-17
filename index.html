@@ -99,6 +99,28 @@
     /* ── notes ── */
     .notes { color: var(--muted); font-size: .9rem; max-width: 280px; }
 
+    /* ── tag pills (inline under name) ── */
+    .tag-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .tag-pill {
+      display: inline-block; padding: 2px 8px; border-radius: 99px;
+      background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe;
+      font-size: .72rem; font-weight: 500; cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .tag-pill:hover { background: #dbeafe; }
+    .tag-pill.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+
+    /* ── filter bar ── */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; align-items: center; }
+    .filter-label { font-size: .8rem; font-weight: 600; color: var(--muted); margin-right: 2px; flex-shrink: 0; }
+    .filter-btn {
+      padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border);
+      background: #f8fafc; color: #475569; font-size: .8rem; font-weight: 500;
+      cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+    }
+    .filter-btn:hover { background: #e2e8f0; }
+    .filter-btn.active { background: #0f172a; color: #fff; border-color: #0f172a; }
+
     /* ── script hint ── */
     .script-hint {
       margin-top: 12px; font-size: .82rem; color: var(--muted);
@@ -143,6 +165,10 @@
     <div class="card" aria-labelledby="printfiles">
       <h2 id="printfiles" style="margin-top:0">Print files</h2>
 
+      <div class="filter-bar" id="filterBar">
+        <span class="filter-label">Filter:</span>
+      </div>
+
       <table class="print-files" aria-label="Print files table">
         <thead>
           <tr>
@@ -158,62 +184,57 @@
           <tr class="category-row">
             <td colspan="5"><span class="category-label">Accessories</span></td>
           </tr>
-          <tr>
+          <tr data-tags="accessory bambu-lab multi-part printer-accessory">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Accessories/P2S_PoopShoot/">P2S PoopShoot</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="accessory">accessory</span><span class="tag-pill" data-tag="bambu-lab">bambu-lab</span><span class="tag-pill" data-tag="multi-part">multi-part</span><span class="tag-pill" data-tag="printer-accessory">printer-accessory</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
             <td data-label="Time">11 hours</td>
-            <td class="notes" data-label="Notes">Bambu P2S waste chute accessory — 3-part print.</td>
+            <td class="notes" data-label="Notes">Bambu P2S waste chute accessory. 3-part print: face, slide, tray.</td>
           </tr>
 
           <tr class="category-row">
             <td colspan="5"><span class="category-label">Decorative</span></td>
           </tr>
-          <tr>
-            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
-            <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/MiniSantaHat/">Mini Santa Hat</a>
-            </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span>
-            </td>
-            <td data-label="Time">—</td>
-            <td class="notes" data-label="Notes"></td>
-          </tr>
-          <tr>
+          <tr data-tags="decorative desk home-goods organizer">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/GrideoPenHolder/">Grideo Pen Holder</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="desk">desk</span><span class="tag-pill" data-tag="home-goods">home-goods</span><span class="tag-pill" data-tag="organizer">organizer</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
             <td data-label="Time">—</td>
             <td class="notes" data-label="Notes"></td>
           </tr>
-          <tr>
+          <tr data-tags="decorative holiday seasonal">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/MiniSantaHat/">Mini Santa Hat</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="holiday">holiday</span><span class="tag-pill" data-tag="seasonal">seasonal</span></div>
+            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
+            <td data-label="Time">—</td>
+            <td class="notes" data-label="Notes"></td>
+          </tr>
+          <tr data-tags="decorative figurine novelty">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/NekkedLady/">Nekked Lady</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="figurine">figurine</span><span class="tag-pill" data-tag="novelty">novelty</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
             <td data-label="Time">—</td>
             <td class="notes" data-label="Notes"></td>
           </tr>
-          <tr>
+          <tr data-tags="decorative figurine fantasy animals">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/Zephyron_StormfangWolf/">Zephyron Stormfang Wolf</a>
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/Zephyron_StormfangWolf/">Zephyron the Stormfang Wolf</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="figurine">figurine</span><span class="tag-pill" data-tag="fantasy">fantasy</span><span class="tag-pill" data-tag="animals">animals</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
             <td data-label="Time">—</td>
             <td class="notes" data-label="Notes"></td>
           </tr>
@@ -221,14 +242,13 @@
           <tr class="category-row">
             <td colspan="5"><span class="category-label">Dragons</span></td>
           </tr>
-          <tr>
+          <tr data-tags="decorative figurine fantasy dragon">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Dragons/NightSpirit/">Night Spirit</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="figurine">figurine</span><span class="tag-pill" data-tag="fantasy">fantasy</span><span class="tag-pill" data-tag="dragon">dragon</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span></td>
             <td data-label="Time">1.5 hours</td>
             <td class="notes" data-label="Notes"></td>
           </tr>
@@ -236,62 +256,57 @@
           <tr class="category-row">
             <td colspan="5"><span class="category-label">FlexiAnimals</span></td>
           </tr>
-          <tr>
+          <tr data-tags="flexi articulated novelty supports-required">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiAnimals/FlexiDick/">Flexi Dick</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="flexi">flexi</span><span class="tag-pill" data-tag="articulated">articulated</span><span class="tag-pill" data-tag="novelty">novelty</span><span class="tag-pill" data-tag="supports-required">supports-required</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#fef9c3;color:#854d0e">Medium</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#fef9c3;color:#854d0e">Medium</span></td>
             <td data-label="Time">1.5 hours</td>
-            <td class="notes" data-label="Notes">Round variant requires supports.</td>
+            <td class="notes" data-label="Notes">Two variants: standard 10cm and round. Round variant requires supports.</td>
           </tr>
-          <tr>
+          <tr data-tags="flexi articulated animals">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiAnimals/FlexiHammerhead/">Flexi Hammerhead</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="flexi">flexi</span><span class="tag-pill" data-tag="articulated">articulated</span><span class="tag-pill" data-tag="animals">animals</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span></td>
             <td data-label="Time">1.5 hours</td>
             <td class="notes" data-label="Notes"></td>
           </tr>
-          <tr>
+          <tr data-tags="flexi articulated animals multi-part">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiAnimals/FlexiSnake/">Flexi Snake</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="flexi">flexi</span><span class="tag-pill" data-tag="articulated">articulated</span><span class="tag-pill" data-tag="animals">animals</span><span class="tag-pill" data-tag="multi-part">multi-part</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span></td>
             <td data-label="Time">—</td>
-            <td class="notes" data-label="Notes">Large model — body and eyes print separately.</td>
+            <td class="notes" data-label="Notes">Large model — body and eyes are separate STL files.</td>
           </tr>
 
           <tr class="category-row">
             <td colspan="5"><span class="category-label">Functional</span></td>
           </tr>
-          <tr>
+          <tr data-tags="functional hardware fasteners automotive">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Functional/PlasticRivet_FasteningClips/">Plastic Rivet Fastening Clips</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="functional">functional</span><span class="tag-pill" data-tag="hardware">hardware</span><span class="tag-pill" data-tag="fasteners">fasteners</span><span class="tag-pill" data-tag="automotive">automotive</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#fee2e2;color:#991b1b">Low</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#fee2e2;color:#991b1b">Low</span></td>
             <td data-label="Time">30 min</td>
-            <td class="notes" data-label="Notes">Needs testing. Czech/Slovak reference PDF included.</td>
+            <td class="notes" data-label="Notes">Needs testing. Two parts: clip (klip) and peg (kolik).</td>
           </tr>
-          <tr>
+          <tr data-tags="functional home-goods kitchen bathroom">
             <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
               <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Functional/Soap_Sponge_Trays/">Soap &amp; Sponge Trays</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="functional">functional</span><span class="tag-pill" data-tag="home-goods">home-goods</span><span class="tag-pill" data-tag="kitchen">kitchen</span><span class="tag-pill" data-tag="bathroom">bathroom</span></div>
             </td>
-            <td data-label="Quality">
-              <span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
             <td data-label="Time">1 hour</td>
             <td class="notes" data-label="Notes"></td>
           </tr>
@@ -305,5 +320,67 @@
       </p>
     </div>
   </div>
+  <script>
+    (function () {
+      const filterBar   = document.getElementById('filterBar');
+      const table       = document.querySelector('table.print-files');
+      let   activeTag   = null;
+
+      // Collect all unique tags from data-tags attributes
+      const tagSet = new Set();
+      table.querySelectorAll('tr[data-tags]').forEach(row => {
+        row.dataset.tags.split(' ').filter(Boolean).forEach(t => tagSet.add(t));
+      });
+
+      // Build filter buttons
+      const allBtn = makeBtn('All', true);
+      filterBar.appendChild(allBtn);
+      [...tagSet].sort().forEach(tag => filterBar.appendChild(makeBtn(tag, false)));
+
+      // Wire up tag pills in rows to trigger the same filter
+      table.querySelectorAll('.tag-pill[data-tag]').forEach(pill => {
+        pill.addEventListener('click', () => applyFilter(pill.dataset.tag));
+      });
+
+      function makeBtn(tag, isActive) {
+        const btn = document.createElement('button');
+        btn.textContent = tag;
+        btn.className   = 'filter-btn' + (isActive ? ' active' : '');
+        btn.addEventListener('click', () => applyFilter(tag === 'All' ? null : tag));
+        return btn;
+      }
+
+      function applyFilter(tag) {
+        activeTag = tag;
+
+        // Update button states
+        filterBar.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', tag === null ? b.textContent === 'All' : b.textContent === tag);
+        });
+
+        // Update tag pill states
+        table.querySelectorAll('.tag-pill[data-tag]').forEach(p => {
+          p.classList.toggle('active', p.dataset.tag === tag);
+        });
+
+        // Show/hide project rows
+        table.querySelectorAll('tr[data-tags]').forEach(row => {
+          const visible = !tag || row.dataset.tags.split(' ').includes(tag);
+          row.style.display = visible ? '' : 'none';
+        });
+
+        // Show/hide category rows — hide if all their projects are hidden
+        table.querySelectorAll('tr.category-row').forEach(catRow => {
+          let sib = catRow.nextElementSibling;
+          let anyVisible = false;
+          while (sib && !sib.classList.contains('category-row')) {
+            if (sib.style.display !== 'none') { anyVisible = true; break; }
+            sib = sib.nextElementSibling;
+          }
+          catRow.style.display = anyVisible ? '' : 'none';
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

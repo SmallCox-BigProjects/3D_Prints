@@ -2,5 +2,6 @@
   "name": "P2S PoopShoot",
   "quality": "Not Printed",
   "time": "11 hours",
-  "notes": "Bambu P2S waste chute accessory. 3-part print: face, slide, tray. Reference PDF from Bambu Lab included."
+  "notes": "Bambu P2S waste chute accessory. 3-part print: face, slide, tray. Reference PDF from Bambu Lab included.",
+  "tags": ["accessory", "bambu-lab", "multi-part", "printer-accessory"]
 }

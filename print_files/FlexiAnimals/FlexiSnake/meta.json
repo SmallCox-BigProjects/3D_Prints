@@ -2,5 +2,6 @@
   "name": "Flexi Snake",
   "quality": "Good",
   "time": "",
-  "notes": "Large model — body and eyes are separate STL files. Body is ~41 MB, eyes ~72 MB."
+  "notes": "Large articulated snake. Body and eyes are separate files. FlexiSnake_P2S.3mf is the Bambu slicer project.",
+  "tags": ["flexi", "articulated", "animals", "multi-part"]
 }

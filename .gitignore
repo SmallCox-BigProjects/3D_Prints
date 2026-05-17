@@ -1,3 +1,6 @@
+# Claude Code session data
+.claude/
+
 # 3D model binaries (large files — not tracked)
 **/*.stl
 **/*.3mf
