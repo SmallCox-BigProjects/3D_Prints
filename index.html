@@ -1,40 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Small-Cox, Lil Projects</title>
   <style>
-    :root{
-      --bg:#f5f7fb; --card:#ffffff; --muted:#6b7280; --accent:#0ea5a4; --border:#e6e9ef;
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0ea5a4;
+      --border: #e6e9ef;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:#0f172a;background:linear-gradient(180deg,var(--bg),#ffffff);}
-    .wrap{max-width:980px;margin:36px auto;padding:20px}
-    .header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;box-shadow:0 8px 20px rgba(2,6,23,0.08)}
-    h1{margin:0;font-size:1.4rem}
-    p.lead{margin:4px 0 0;color:var(--muted)}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 10px 30px rgba(2,6,23,0.04)}
-    table.print-files{width:100%;border-collapse:separate;border-spacing:0;margin-top:8px}
-    table.print-files thead th{background:#fbfdff;padding:12px 14px;text-align:left;font-weight:700;border-bottom:1px solid var(--border)}
-    table.print-files th, table.print-files td{padding:12px 14px;vertical-align:top}
-    tbody tr{transition:background .18s,transform .12s}
-    tbody tr:nth-child(odd){background:#fff}
-    tbody tr:nth-child(even){background:#fbfbfd}
-    tbody tr:hover{background:linear-gradient(90deg,#ffffff,#f7fffe);transform:translateY(-1px)}
-    .name-link a{color:#0f172a;font-weight:600;text-decoration:none}
-    .name-link a:hover{color:var(--accent);text-decoration:underline}
-    .link-cell a{display:inline-block;background:#ecfdf5;color:var(--accent);padding:6px 10px;border-radius:8px;border:1px solid rgba(14,165,164,0.12);text-decoration:none;font-size:.95rem}
-    .notes{color:var(--muted);font-size:.95rem}
-    .notes-table td{border:none;padding:4px 6px}
-    @media(max-width:720px){
-      table.print-files thead{display:none}
-      table.print-files, table.print-files tbody, table.print-files tr, table.print-files td{display:block;width:100%}
-      table.print-files tr{margin-bottom:12px;background:linear-gradient(180deg,#fff,#fafcff);border-radius:10px;padding:10px}
-      table.print-files td{padding:8px 10px;border:none}
-      td[data-label]::before{content:attr(data-label);display:block;font-weight:700;color:var(--muted);margin-bottom:6px}
-      .link-cell a{width:100%;box-sizing:border-box;display:block;text-align:left}
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color: #0f172a;
+      background: linear-gradient(180deg, var(--bg), #ffffff);
+    }
+    .wrap { max-width: 1040px; margin: 36px auto; padding: 20px; }
+
+    /* ── header ── */
+    .header { display: flex; gap: 16px; align-items: center; margin-bottom: 18px; }
+    .logo {
+      width: 56px; height: 56px; border-radius: 10px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 1rem;
+      box-shadow: 0 8px 20px rgba(2,6,23,.08);
+    }
+    h1 { margin: 0; font-size: 1.4rem; }
+    p.lead { margin: 4px 0 0; color: var(--muted); }
+
+    /* ── card ── */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px;
+      box-shadow: 0 10px 30px rgba(2,6,23,.04);
+    }
+    .card h2 { margin-top: 0; }
+
+    /* ── table ── */
+    table.print-files {
+      width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 8px;
+    }
+    table.print-files thead th {
+      background: #fbfdff; padding: 10px 14px;
+      text-align: left; font-weight: 700;
+      border-bottom: 1px solid var(--border);
+    }
+    table.print-files th, table.print-files td {
+      padding: 10px 14px; vertical-align: middle;
+    }
+    tbody tr { transition: background .18s, transform .12s; }
+    tbody tr:not(.category-row):nth-child(odd)  { background: #fff; }
+    tbody tr:not(.category-row):nth-child(even) { background: #fbfbfd; }
+    tbody tr:not(.category-row):hover {
+      background: linear-gradient(90deg, #ffffff, #f7fffe);
+      transform: translateY(-1px);
+    }
+
+    /* ── category header row ── */
+    .category-row td {
+      background: #f0faf9;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 14px;
+    }
+    .category-label {
+      font-weight: 700; font-size: .85rem; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+    }
+
+    /* ── image cell ── */
+    .img-cell { width: 96px; }
+    .preview-img {
+      width: 80px; height: 60px; object-fit: cover;
+      border-radius: 6px; display: block;
+    }
+    .img-placeholder {
+      width: 80px; height: 60px; border-radius: 6px;
+      background: #f1f5f9; border: 1px dashed #cbd5e1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; color: #94a3b8; text-align: center; line-height: 1.3;
+    }
+
+    /* ── name link ── */
+    .name-link a { color: #0f172a; font-weight: 600; text-decoration: none; }
+    .name-link a:hover { color: var(--accent); text-decoration: underline; }
+
+    /* ── quality badge ── */
+    .quality-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 99px;
+      font-size: .8rem; font-weight: 600; white-space: nowrap;
+    }
+
+    /* ── notes ── */
+    .notes { color: var(--muted); font-size: .9rem; max-width: 280px; }
+
+    /* ── tag pills (inline under name) ── */
+    .tag-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .tag-pill {
+      display: inline-block; padding: 2px 8px; border-radius: 99px;
+      background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe;
+      font-size: .72rem; font-weight: 500; cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .tag-pill:hover { background: #dbeafe; }
+    .tag-pill.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+
+    /* ── filter bar ── */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; align-items: center; }
+    .filter-label { font-size: .8rem; font-weight: 600; color: var(--muted); margin-right: 2px; flex-shrink: 0; }
+    .filter-btn {
+      padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border);
+      background: #f8fafc; color: #475569; font-size: .8rem; font-weight: 500;
+      cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+    }
+    .filter-btn:hover { background: #e2e8f0; }
+    .filter-btn.active { background: #0f172a; color: #fff; border-color: #0f172a; }
+
+    /* ── script hint ── */
+    .script-hint {
+      margin-top: 12px; font-size: .82rem; color: var(--muted);
+      padding: 8px 12px; background: #f8fafc; border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .script-hint code { font-family: monospace; background: #e2e8f0; padding: 1px 5px; border-radius: 4px; }
+
+    /* ── responsive ── */
+    @media (max-width: 720px) {
+      table.print-files thead { display: none; }
+      table.print-files,
+      table.print-files tbody,
+      table.print-files tr,
+      table.print-files td { display: block; width: 100%; }
+      table.print-files tr:not(.category-row) {
+        margin-bottom: 12px;
+        background: linear-gradient(180deg,#fff,#fafcff) !important;
+        border-radius: 10px; padding: 10px;
+        border: 1px solid var(--border);
+      }
+      table.print-files td { padding: 8px 10px; border: none; }
+      td[data-label]::before {
+        content: attr(data-label);
+        display: block; font-weight: 700; color: var(--muted); margin-bottom: 4px;
+      }
+      .img-cell { width: 100%; }
+      .preview-img, .img-placeholder { width: 100%; height: 140px; }
     }
   </style>
 </head>
@@ -44,110 +158,229 @@
       <div class="logo">3D</div>
       <div>
         <h1>Small-Cox, Lil Projects</h1>
-        <p class="lead">Landing GitHubIO page for 3D printing projects.</p>
+        <p class="lead">Landing page for 3D print projects &mdash; organized by category.</p>
       </div>
     </div>
 
     <div class="card" aria-labelledby="printfiles">
       <h2 id="printfiles" style="margin-top:0">Print files</h2>
 
-      <table class="print-files" id="printFilesTable" aria-label="Print files table">
+      <div class="filter-bar" id="filterBar">
+        <span class="filter-label">Filter:</span>
+      </div>
+
+      <table class="print-files" aria-label="Print files table">
         <thead>
-          <tr><th>Name</th><th>Link</th><th>Notes</th></tr>
+          <tr>
+            <th style="width:96px">Preview</th>
+            <th>Name</th>
+            <th style="width:130px">Quality</th>
+            <th style="width:120px">Time</th>
+            <th>Notes</th>
+          </tr>
         </thead>
         <tbody>
-          <tr>
+        <!-- PRINT_FILES_ROWS -->
+          <tr class="category-row">
+            <td colspan="5"><span class="category-label">Accessories</span></td>
+          </tr>
+          <tr data-tags="accessory bambu-lab multi-part printer-accessory">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Dragons/">Dragons</a>
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Accessories/P2S_PoopShoot/">P2S PoopShoot</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="accessory">accessory</span><span class="tag-pill" data-tag="bambu-lab">bambu-lab</span><span class="tag-pill" data-tag="multi-part">multi-part</span><span class="tag-pill" data-tag="printer-accessory">printer-accessory</span></div>
             </td>
-            <td class="link-cell" data-label="Link">
-              <a href="print_files/Dragons/">print_files/Dragons/</a>
-            </td>
-            <td class="notes" data-label="Notes">
-              <table class="notes-table" style="border-collapse:collapse;">
-                <tr><td style="font-weight:600">Quality</td><td>Good</td></tr>
-                <tr><td style="font-weight:600">Time</td><td>1.5 hours</td></tr>
-              </table>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
+            <td data-label="Time">11 hours</td>
+            <td class="notes" data-label="Notes">Bambu P2S waste chute accessory. 3-part print: face, slide, tray.</td>
           </tr>
 
-          <tr>
+          <tr class="category-row">
+            <td colspan="5"><span class="category-label">Decorative</span></td>
+          </tr>
+          <tr data-tags="decorative desk home-goods organizer">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiAnimals/">FlexiAnimals</a>
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/GrideoPenHolder/">Grideo Pen Holder</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="desk">desk</span><span class="tag-pill" data-tag="home-goods">home-goods</span><span class="tag-pill" data-tag="organizer">organizer</span></div>
             </td>
-            <td class="link-cell" data-label="Link">
-              <a href="print_files/FlexiAnimals/">print_files/FlexiAnimals/</a>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
+            <td data-label="Time">—</td>
+            <td class="notes" data-label="Notes"></td>
+          </tr>
+          <tr data-tags="decorative holiday seasonal">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/MiniSantaHat/">Mini Santa Hat</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="holiday">holiday</span><span class="tag-pill" data-tag="seasonal">seasonal</span></div>
             </td>
-            <td class="notes" data-label="Notes">
-              <table class="notes-table" style="border-collapse:collapse;">
-                <tr><td style="font-weight:600">Quality</td><td>Good</td></tr>
-                <tr><td style="font-weight:600">Time</td><td>1.5 hours</td></tr>
-              </table>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
+            <td data-label="Time">—</td>
+            <td class="notes" data-label="Notes"></td>
+          </tr>
+          <tr data-tags="decorative figurine novelty">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/NekkedLady/">Nekked Lady</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="figurine">figurine</span><span class="tag-pill" data-tag="novelty">novelty</span></div>
             </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
+            <td data-label="Time">—</td>
+            <td class="notes" data-label="Notes"></td>
+          </tr>
+          <tr data-tags="decorative figurine fantasy animals">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Decorative/Zephyron_StormfangWolf/">Zephyron the Stormfang Wolf</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="figurine">figurine</span><span class="tag-pill" data-tag="fantasy">fantasy</span><span class="tag-pill" data-tag="animals">animals</span></div>
+            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
+            <td data-label="Time">—</td>
+            <td class="notes" data-label="Notes"></td>
           </tr>
 
-          <tr>
+          <tr class="category-row">
+            <td colspan="5"><span class="category-label">Dragons</span></td>
+          </tr>
+          <tr data-tags="decorative figurine fantasy dragon">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/P2S_PoopShoot/">P2S_PoopShoot</a>
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Dragons/NightSpirit/">Night Spirit</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="decorative">decorative</span><span class="tag-pill" data-tag="figurine">figurine</span><span class="tag-pill" data-tag="fantasy">fantasy</span><span class="tag-pill" data-tag="dragon">dragon</span></div>
             </td>
-            <td class="link-cell" data-label="Link">
-              <a href="print_files/P2S_PoopShoot/">print_files/P2S_PoopShoot/</a>
-            </td>
-            <td class="notes" data-label="Notes">
-              <table class="notes-table" style="border-collapse:collapse;">
-                <tr><td style="font-weight:600">Quality</td><td>Not Printed</td></tr>
-                <tr><td style="font-weight:600">Time</td><td>11 Hours</td></tr>
-              </table>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span></td>
+            <td data-label="Time">1.5 hours</td>
+            <td class="notes" data-label="Notes"></td>
           </tr>
 
-          <tr>
+          <tr class="category-row">
+            <td colspan="5"><span class="category-label">FlexiAnimals</span></td>
+          </tr>
+          <tr data-tags="flexi articulated novelty supports-required">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiDick/">FlexiDick</a>
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiAnimals/FlexiDick/">Flexi Dick</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="flexi">flexi</span><span class="tag-pill" data-tag="articulated">articulated</span><span class="tag-pill" data-tag="novelty">novelty</span><span class="tag-pill" data-tag="supports-required">supports-required</span></div>
             </td>
-            <td class="link-cell" data-label="Link">
-              <a href="print_files/FlexiDick/">print_files/FlexiDick/</a>
+            <td data-label="Quality"><span class="quality-badge" style="background:#fef9c3;color:#854d0e">Medium</span></td>
+            <td data-label="Time">1.5 hours</td>
+            <td class="notes" data-label="Notes">Two variants: standard 10cm and round. Round variant requires supports.</td>
+          </tr>
+          <tr data-tags="flexi articulated animals">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiAnimals/FlexiHammerhead/">Flexi Hammerhead</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="flexi">flexi</span><span class="tag-pill" data-tag="articulated">articulated</span><span class="tag-pill" data-tag="animals">animals</span></div>
             </td>
-            <td class="notes" data-label="Notes">
-              <table class="notes-table" style="border-collapse:collapse;">
-                <tr><td style="font-weight:600">Quality</td><td>Medium</td></tr>
-                <tr><td style="font-weight:600">Time</td><td>1.5 hours</td></tr>
-              </table>
+            <td data-label="Quality"><span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span></td>
+            <td data-label="Time">1.5 hours</td>
+            <td class="notes" data-label="Notes"></td>
+          </tr>
+          <tr data-tags="flexi articulated animals multi-part">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/FlexiAnimals/FlexiSnake/">Flexi Snake</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="flexi">flexi</span><span class="tag-pill" data-tag="articulated">articulated</span><span class="tag-pill" data-tag="animals">animals</span><span class="tag-pill" data-tag="multi-part">multi-part</span></div>
             </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#dcfce7;color:#166534">Good</span></td>
+            <td data-label="Time">—</td>
+            <td class="notes" data-label="Notes">Large model — body and eyes are separate STL files.</td>
           </tr>
 
-          <tr>
-            <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/PlasticRivet_FasteningClips/">PlasticRivet_FasteningClips</a>
-            </td>
-            <td class="link-cell" data-label="Link">
-              <a href="print_files/PlasticRivet_FasteningClips/">print_files/PlasticRivet_FasteningClips/</a>
-            </td>
-            <td class="notes" data-label="Notes">
-              <table class="notes-table" style="border-collapse:collapse;">
-                <tr><td style="font-weight:600">Quality</td><td>Low - Needs testing</td></tr>
-                <tr><td style="font-weight:600">Time</td><td>30 Minutes</td></tr>
-              </table>
-            </td>
+          <tr class="category-row">
+            <td colspan="5"><span class="category-label">Functional</span></td>
           </tr>
-
-          <tr>
+          <tr data-tags="functional hardware fasteners automotive">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
             <td class="name-link" data-label="Name">
-              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Soap_Sponge_Trays/">Soap_Sponge_Trays</a>
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Functional/PlasticRivet_FasteningClips/">Plastic Rivet Fastening Clips</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="functional">functional</span><span class="tag-pill" data-tag="hardware">hardware</span><span class="tag-pill" data-tag="fasteners">fasteners</span><span class="tag-pill" data-tag="automotive">automotive</span></div>
             </td>
-            <td class="link-cell" data-label="Link">
-              <a href="print_files/Soap_Sponge_Trays/">print_files/Soap_Sponge_Trays/</a>
-            </td>
-            <td class="notes" data-label="Notes">
-              <table class="notes-table" style="border-collapse:collapse;">
-                <tr><td style="font-weight:600">Quality</td><td>Not Printed</td></tr>
-                <tr><td style="font-weight:600">Time</td><td>1 Hour</td></tr>
-              </table>
-            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#fee2e2;color:#991b1b">Low</span></td>
+            <td data-label="Time">30 min</td>
+            <td class="notes" data-label="Notes">Needs testing. Two parts: clip (klip) and peg (kolik).</td>
           </tr>
+          <tr data-tags="functional home-goods kitchen bathroom">
+            <td class="img-cell" data-label="Preview"><div class="img-placeholder">No<br>Image</div></td>
+            <td class="name-link" data-label="Name">
+              <a href="https://github.com/SmallCox-BigProjects/3D_Prints/tree/main/print_files/Functional/Soap_Sponge_Trays/">Soap &amp; Sponge Trays</a>
+              <div class="tag-pills"><span class="tag-pill" data-tag="functional">functional</span><span class="tag-pill" data-tag="home-goods">home-goods</span><span class="tag-pill" data-tag="kitchen">kitchen</span><span class="tag-pill" data-tag="bathroom">bathroom</span></div>
+            </td>
+            <td data-label="Quality"><span class="quality-badge" style="background:#f1f5f9;color:#475569">Not Printed</span></td>
+            <td data-label="Time">1 hour</td>
+            <td class="notes" data-label="Notes"></td>
+          </tr>
+        <!-- /PRINT_FILES_ROWS -->
         </tbody>
       </table>
+
+      <p class="script-hint">
+        To regenerate this table from your local <code>print_files/</code> folders, run:
+        <code>node scripts/generate-print-table.js</code>
+      </p>
     </div>
   </div>
+  <script>
+    (function () {
+      const filterBar   = document.getElementById('filterBar');
+      const table       = document.querySelector('table.print-files');
+      let   activeTag   = null;
+
+      // Collect all unique tags from data-tags attributes
+      const tagSet = new Set();
+      table.querySelectorAll('tr[data-tags]').forEach(row => {
+        row.dataset.tags.split(' ').filter(Boolean).forEach(t => tagSet.add(t));
+      });
+
+      // Build filter buttons
+      const allBtn = makeBtn('All', true);
+      filterBar.appendChild(allBtn);
+      [...tagSet].sort().forEach(tag => filterBar.appendChild(makeBtn(tag, false)));
+
+      // Wire up tag pills in rows to trigger the same filter
+      table.querySelectorAll('.tag-pill[data-tag]').forEach(pill => {
+        pill.addEventListener('click', () => applyFilter(pill.dataset.tag));
+      });
+
+      function makeBtn(tag, isActive) {
+        const btn = document.createElement('button');
+        btn.textContent = tag;
+        btn.className   = 'filter-btn' + (isActive ? ' active' : '');
+        btn.addEventListener('click', () => applyFilter(tag === 'All' ? null : tag));
+        return btn;
+      }
+
+      function applyFilter(tag) {
+        activeTag = tag;
+
+        // Update button states
+        filterBar.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', tag === null ? b.textContent === 'All' : b.textContent === tag);
+        });
+
+        // Update tag pill states
+        table.querySelectorAll('.tag-pill[data-tag]').forEach(p => {
+          p.classList.toggle('active', p.dataset.tag === tag);
+        });
+
+        // Show/hide project rows
+        table.querySelectorAll('tr[data-tags]').forEach(row => {
+          const visible = !tag || row.dataset.tags.split(' ').includes(tag);
+          row.style.display = visible ? '' : 'none';
+        });
+
+        // Show/hide category rows — hide if all their projects are hidden
+        table.querySelectorAll('tr.category-row').forEach(catRow => {
+          let sib = catRow.nextElementSibling;
+          let anyVisible = false;
+          while (sib && !sib.classList.contains('category-row')) {
+            if (sib.style.display !== 'none') { anyVisible = true; break; }
+            sib = sib.nextElementSibling;
+          }
+          catRow.style.display = anyVisible ? '' : 'none';
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+{
+  "name": "Print-in-Place Bearings",
+  "quality": "Not Printed",
+  "time": "",
+  "notes": "Standard-sized print-in-place bearings. Sizes: 6000, 6001, 6002, 6004, 607, 608, 609, 6706, 6902. Three tolerance variants per size: Default, Loose, and Tight — tune to your printer's tolerances.",
+  "tags": ["tools", "functional", "hardware", "mechanical", "print-in-place"]
+}
